@@ -44,8 +44,8 @@ config or config part dynamically updates and `watch` called
 var config = new Config();
 
 config
-    .use(require('maf-config-consul'))
-    .use(require('maf-config-yaml'))
+    .use(require('@0devs/config-consul'))
+    .use(require('@0devs/config-yaml'))
     .from('/etc/config.yml')
     .part('consul = services/tasks', 'api.tasks')
     .watch('api.tasks', function () {

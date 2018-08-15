@@ -14,7 +14,7 @@ module.exports = function methodsUseValidateReceivePlugin(plugin, ConfigError) {
     if (typeOf !== type) {
       throw new ConfigError({
         code: ConfigError.CODES.INVALID_PLUGIN,
-        message: `maf-config: receive plugin type:  prop "${name}" is not ${type}`,
+        message: `@0devs/config: receive plugin type:  prop "${name}" is not ${type}`,
       });
     }
   });

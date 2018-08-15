@@ -1,18 +1,11 @@
-# maf-config
+# @0devs/config
 
 extendable config
-
-[![bitHound Overall Score](https://www.bithound.io/github/mafjs/config/badges/score.svg)](https://www.bithound.io/github/mafjs/config)
-[![bitHound Dependencies](https://www.bithound.io/github/mafjs/config/badges/dependencies.svg)](https://www.bithound.io/github/mafjs/config/master/dependencies/npm)
-[![Build Status](https://travis-ci.org/mafjs/config.svg?branch=master)](https://travis-ci.org/mafjs/config)
-[![Coverage Status](https://coveralls.io/repos/github/mafjs/config/badge.svg?branch=master)](https://coveralls.io/github/mafjs/config?branch=master)
-
-[![NPM](https://nodei.co/npm/maf-config.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/maf-config/)
 
 # install
 
 ```
-npm install --save maf-config
+npm install --save @0devs/config
 ```
 
 # usage
@@ -24,12 +17,12 @@ by default config can't receive any config types, use [plugins](#plugins)
 here example of node.js usage, reading json configs
 
 ```js
-var Config = require('maf-config');
+var Config = require('@0devs/config');
 
 var config = new Config();
 
 config
-    .use(require('maf-config-from-json'))
+    .use(require('@0devs/config-from-json'))
     .from('/etc/config/base.json')
     .from('/etc/config/mysql.json', 'db.mysql')
     .from('/etc/config/mongo.json', 'db.mongo')
@@ -68,7 +61,7 @@ for more details (plugins, validation) - see [examples](https://github.com/mafjs
 
 # plugins
 
-[maf-config-from-json](https://github.com/mafjs/config-from-json) - read json configs
+[@0devs/config-from-json](https://github.com/0devs/node-config-from-json) - read json configs
 
 # API
 

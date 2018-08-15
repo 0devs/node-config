@@ -1,4 +1,4 @@
-# Create maf-config Plugin
+# Create @0devs/config Plugin
 
 ## plugin types
 

@@ -3,7 +3,7 @@
 ### base usage
 
 ```js
-var Config = require('maf-config');
+var Config = require('@0devs/config');
 var logger = require('./Logger').getLogger();
 
 var config = new Config(logger);
@@ -21,7 +21,7 @@ var configObject = config.get('.');
 ## immutable config
 
 ```js
-var Config = require('maf-config');
+var Config = require('@0devs/config');
 var logger = require('./Logger').getLogger();
 
 var config = new Config(logger);
@@ -46,7 +46,7 @@ config.set('db.host', '10.10.10.10');
 // for example using joi
 
 var joi = require('joi');
-var Config = require('maf-config');
+var Config = require('@0devs/config');
 
 var config = new Config();
 
@@ -93,11 +93,11 @@ all config in one file
 
 ```js
 
-var Config = require('maf-config');
+var Config = require('@0devs/config');
 
 var config = new Config();
 
-config.use(require('maf-config/from/json'), {options: 'here'});
+config.use(require('@0devs/config/from/json'), {options: 'here'});
 
 config
     .from('/etc/config.json')
@@ -141,11 +141,11 @@ config.init()
 #### init config
 
 ```js
-var Config = require('maf-config');
+var Config = require('@0devs/config');
 
 var config = new Config();
 
-config.use(require('maf-config/from/json'), {options: 'here'});
+config.use(require('@0devs/config/from/json'), {options: 'here'});
 
 config
     .from('/etc/config.json')
@@ -179,7 +179,7 @@ config.init()
 
 for example
 
-### plugin `maf-config-yml`
+### plugin `@0devs/config-yml`
 
 ```js
 
@@ -210,7 +210,7 @@ YamlPlugin.prototype.init = function (options) {
             } else {
                 return reject(
                     new Error(
-                        'maf-config-yml: options.fileRegex should be RegExp'
+                        '@0devs/config-yml: options.fileRegex should be RegExp'
                     )
                 );
             }
@@ -268,14 +268,14 @@ YamlPlugin.prototype.read = function (filepath) {
 ### mixed sources usage
 
 ```js
-var Config = require('maf-config');
+var Config = require('@0devs/config');
 
 var config = new Config();
 
 config
-    .use(require('maf-config-from-yml'))
-    .use(require('maf-config-from-json'))
-    .use(require('maf-config-from-http'))
+    .use(require('@0devs/config-from-yml'))
+    .use(require('@0devs/config-from-json'))
+    .use(require('@0devs/config-from-http'))
     .from({
         '.': '/etc/test.config.yml',
         'db':  '/etc/db.json',
@@ -293,7 +293,7 @@ config
 // OR using consul kv
 
 config
-    .use(require('maf-config-consul'))
+    .use(require('@0devs/config-consul'))
     .from(`consul = services/tasks, services/tasks:${os.hostname()}`)
     .init()
     .then()
@@ -302,8 +302,8 @@ config
 // OR using mixed sources
 
 config
-    .use(require('maf-config-consul'))
-    .use(require('maf-config-yml'))
+    .use(require('@0devs/config-consul'))
+    .use(require('@0devs/config-yml'))
     .from(`consul = services/tasks, services/tasks:${os.hostname()}`)
     .from('/etc/db.yml', 'db')
     .init()
