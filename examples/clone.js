@@ -1,28 +1,28 @@
 /* eslint-disable no-console */
 
-let Config = require(__dirname + '/../package/Config');
+const Config = require(`${__dirname}/../lib/Config`).default;
 
-let config = new Config();
+const config = new Config();
 
 config
-    .set('.', {
-        server: {
-            host: null,
-            port: 80
-        },
-        rest: {
-            endpoint: '/api/v0'
-        }
-    })
-    .setImmutable(false);
+  .set('.', {
+    server: {
+      host: null,
+      port: 80,
+    },
+    rest: {
+      endpoint: '/api/v0',
+    },
+  })
+  .setImmutable(false);
 
 console.log('full config', config.get('.'));
 
-let clonedConfig = config.clone('.');
+const clonedConfig = config.clone('.');
 
 console.log('clonedConfig', clonedConfig.get('.'));
 
-let serverConfig = config.clone('server');
+const serverConfig = config.clone('server');
 
 console.log('serverConfig immutable', serverConfig.isImmutable());
 
@@ -30,7 +30,7 @@ serverConfig.set('some', 1);
 
 console.log('server config', serverConfig.get('.'));
 
-let restConfig = config.clone('rest');
+const restConfig = config.clone('rest');
 
 console.log('rest config', restConfig.get('.'));
 
