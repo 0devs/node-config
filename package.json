@@ -23,20 +23,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mafjs/config.git"
+    "url": "git+https://github.com/0devs/node-config.git"
   },
   "keywords": [],
   "author": "alekzonder <alekzonder@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mafjs/config/issues"
+    "url": "https://github.com/0devs/node-config/issues"
   },
-  "homepage": "https://github.com/mafjs/config#readme",
+  "homepage": "https://github.com/0devs/node-config#readme",
   "devDependencies": {
-    "@0devs/package": "^0.9.1"
+    "@0devs/package": "^0.13.0",
+    "@babel/preset-env": "^7.4.3"
   },
   "dependencies": {
-    "@0devs/error": "^0.4.1",
+    "@0devs/error": "^1.2.0",
     "lodash.get": "4.4.x",
     "lodash.merge": "4.6.x",
     "lodash.set": "4.3.x"

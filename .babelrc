@@ -1,3 +1,1 @@
-{
-  "extends": "./node_modules/@0devs/package/config/.babelrc"
-}
+{ "presets": ["@babel/preset-env"] }
