@@ -5,16 +5,17 @@
   "main": "lib/Config.js",
   "scripts": {
     "test": "p-jest",
-    "clean": "rm -rf package coverage npm-debug.log",
+    "clean": "rm -rf lib coverage npm-debug.log",
     "build": "babel src/ --out-dir lib/",
-    "lint": "p-eslint src/ spec/",
+    "ts": "p-typescript --watch",
+    "lint": "p-tslint --project .",
+    "postversion": "git push origin && git push --tags",
+    "prepublish": "npm run clean && npm run build",
     "---build:for-test": "npm run build -- --plugins istanbul",
     "---build:package-json": "node ./scripts/copyPackageJson",
     "---dev": "npm run build -- --watch --plugins istanbul",
     "---test:fast": "./node_modules/.bin/tap test/unit -J",
     "---test:cov": "npm test -- --coverage-report=html",
-    "postversion": "git push origin && git push --tags",
-    "prepublish": "npm run clean && npm run build",
     "---publish": "npm run clean && npm run build && npm run build:package-json && cd ./package && npm publish",
     "---pu": "npm run _publish"
   },
@@ -36,7 +37,11 @@
     "@0devs/package": "0.x",
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3"
+    "@babel/preset-env": "^7.4.3",
+    "@types/lodash.get": "^4.4.6",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/lodash.set": "^4.3.6",
+    "@types/node": "^12.0.0"
   },
   "dependencies": {
     "@0devs/error": "^1.2.0",

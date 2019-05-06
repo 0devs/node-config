@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-const Config = require(`${__dirname}/../lib/Config`).default;
+const Config = require('../lib/Config').default;
 
 const config = new Config();
 
