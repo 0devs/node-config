@@ -10,8 +10,8 @@ module.exports = function methodsReceiveRead(config, ConfigError, founded) {
 
     if (
       !promise
-            || kindOf(promise.then) !== 'function'
-            || kindOf(promise.catch) !== 'function'
+      || kindOf(promise.then) !== 'function'
+      || kindOf(promise.catch) !== 'function'
     ) {
       throw new ConfigError({
         code: ConfigError.CODES.INVALID_PLUGIN_READ,
