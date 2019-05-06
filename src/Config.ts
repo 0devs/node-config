@@ -45,7 +45,7 @@ class Config {
   /**
    * @param {?Logger} logger
    */
-  constructor(logger: Logger | null) {
+  constructor(logger?: Logger) {
     this.Error = ConfigError;
 
     this._logger = this._validateLogger(logger);
@@ -229,7 +229,7 @@ class Config {
    * @param {String|Array|Undefined} to
    * @return {this}
    */
-  public from(sourcepath: string, to: string): Config {
+  public from(sourcepath: string, to?: string): Config {
     return from(this, sourcepath, to);
   }
 

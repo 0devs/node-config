@@ -1,7 +1,7 @@
-import Config from '../src/Config';
+import Config from "../src/Config";
 
-describe('Config:isValid', () => {
-  it('should return valid state', () => {
+describe("Config:isValid", () => {
+  it("should return valid state", () => {
     const config = new Config();
 
     expect(config.isValid()).toEqual(false);

@@ -1,14 +1,15 @@
-import Config from '../src/Config';
-import ConfigError from '../src/Error';
+import Config from "../src/Config";
+import ConfigError from "../src/Error";
 
-describe('Config#setImmutable', () => {
-  it('should mutable by default', () => {
+describe("Config#setImmutable", () => {
+  it("should mutable by default", () => {
     const config = new Config();
 
+    // @ts-ignore
     expect(config._immutable).toEqual(false);
   });
 
-  it('should set immutable', () => {
+  it("should set immutable", () => {
     const config = new Config();
 
     config.setImmutable(true);
@@ -16,7 +17,7 @@ describe('Config#setImmutable', () => {
     expect(config.isImmutable()).toEqual(true);
   });
 
-  it('should set immutable false', () => {
+  it("should set immutable false", () => {
     const config = new Config();
 
     config.setImmutable(true);
@@ -25,7 +26,7 @@ describe('Config#setImmutable', () => {
     expect(config.isImmutable()).toEqual(false);
   });
 
-  it('if flag is not boolean, throw error', () => {
+  it("if flag is not boolean, throw error", () => {
     const config = new Config();
 
     try {

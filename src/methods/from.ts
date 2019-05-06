@@ -6,7 +6,7 @@ import _in = require("./_in");
 function methodsFrom(
   config: Config,
   sourcepath: string | string[],
-  to: string,
+  rawTo?: string,
 ): Config {
   const sourcepathType = kindOf(sourcepath);
 
@@ -21,7 +21,7 @@ function methodsFrom(
     });
   }
 
-  const toType = kindOf(to);
+  const toType = kindOf(rawTo);
 
   if (_in(["string", "array", "undefined"], toType) === false) {
     throw new ConfigError({
@@ -34,12 +34,10 @@ function methodsFrom(
     });
   }
 
-  if (toType === "string") {
-    to = to.trim();
-  }
+  let to = ".";
 
-  if (toType === "undefined") {
-    to = ".";
+  if (rawTo && toType === "string") {
+    to = rawTo.trim();
   }
 
   config._pushFromItem({ sourcepath, to });
