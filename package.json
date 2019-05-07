@@ -3,6 +3,7 @@
   "version": "1.4.0",
   "description": "extendable config",
   "main": "lib/Config.js",
+  "types": "lib/Config.d.ts",
   "scripts": {
     "test": "p-jest",
     "clean": "rm -rf lib coverage npm-debug.log",

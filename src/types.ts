@@ -14,7 +14,7 @@ export interface IReceivePlugin {
 export type IReceivePluginClass = new (logger?: any) => IReceivePlugin;
 
 export type Name = string | string[];
-export type Value = null | any[] | string | number | object | boolean;
+export type Value = any; // null | any[] | string | number | object | boolean;
 export type ReturnValue = Value | undefined;
 export type Data = any;
 export type ValidationFunction = (data: Data) => Promise<boolean>;

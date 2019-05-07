@@ -34,7 +34,8 @@ export {IReceivePlugin, IFromItem, Name, Value, ReturnValue, Data, ValidationFun
  * Config
  */
 class Config {
-  public Error: typeof ConfigError;
+  public static Error = ConfigError;
+  public Error = ConfigError;
   private _logger: Logger | null;
   private _immutable: boolean;
   private _valid: boolean;
@@ -48,8 +49,6 @@ class Config {
    * @param {?Logger} logger
    */
   constructor(logger?: Logger) {
-    this.Error = ConfigError;
-
     this._logger = this._validateLogger(logger);
 
     this._immutable = false;

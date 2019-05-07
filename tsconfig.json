@@ -3,7 +3,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "./lib",
-        "allowJs": true,
+        "allowJs": false,
         "target": "es5",
         "lib": [ "es2015" ],
         "strict": true,
@@ -16,12 +16,10 @@
         "experimentalDecorators": false,
         "emitDecoratorMetadata": false,
         "types": ["node", "jest"],
-        "downlevelIteration": true
+        "downlevelIteration": true,
+        "declaration": true
     },
     "include": [
       "./src/**/*"
-    ],
-    "_exclude": [
-      "./src/spec/**/*"
     ]
 }
