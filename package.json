@@ -6,7 +6,7 @@
   "scripts": {
     "test": "p-jest",
     "clean": "rm -rf lib coverage npm-debug.log",
-    "build": "babel src/ --out-dir lib/",
+    "build": "p-typescript",
     "ts": "p-typescript --watch",
     "lint": "p-tslint --project .",
     "postversion": "git push origin && git push --tags",
@@ -35,9 +35,6 @@
   "homepage": "https://github.com/0devs/node-config#readme",
   "devDependencies": {
     "@0devs/package": "0.x",
-    "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
     "@types/lodash.get": "^4.4.6",
     "@types/lodash.merge": "^4.6.6",
     "@types/lodash.set": "^4.3.6",

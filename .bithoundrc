@@ -1,8 +1,0 @@
-{
-    "ignore": [
-        "docs/**",
-        "examples/**",
-        "test/**",
-        "src/modules/kind-of.js"
-    ]
-}
