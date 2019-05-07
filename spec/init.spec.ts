@@ -1,14 +1,20 @@
 /* eslint-disable global-require */
 import Config from "../src/Config";
 
-jest.mock("../src/methods/receive", () => jest.fn());
+jest.mock("../src/methods/receive", () => {
+  return {
+    default: jest.fn(),
+  };
+});
+
+// tslint:disable-next-line
 jest.mock("../src/methods/validate", () => {
   return {
     default: jest.fn(),
   };
 });
 
-import receive = require("../src/methods/receive");
+import receive from "../src/methods/receive";
 import validate from "../src/methods/validate";
 
 describe("Config#init", () => {

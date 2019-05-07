@@ -5,6 +5,7 @@ import kindOf = require("./modules/kind-of");
 import {
   IFromItem,
   IReceivePlugin,
+  IReceivePluginClass,
   Name,
   Value,
   ReturnValue,
@@ -18,7 +19,7 @@ import get from "./methods/get";
 import validate from "./methods/validate";
 import use = require("./methods/use");
 import from from "./methods/from";
-import receive = require("./methods/receive");
+import receive from "./methods/receive";
 import getRaw from "./methods/getRaw";
 import setRaw from "./methods/setRaw";
 import mergeRaw from "./methods/mergeRaw";
@@ -61,6 +62,10 @@ class Config {
 
     this._receivePlugins = [];
     this._validatePlugin = null;
+  }
+
+  public get logger() {
+    return this._logger;
   }
 
   public get __from() {
@@ -226,7 +231,7 @@ class Config {
    * @param {Object} options
    * @return {this}
    */
-  public use(plugin: () => void, options: object): this {
+  public use(plugin: IReceivePluginClass, options: object): this {
     use(this, plugin, options);
     return this;
   }
@@ -247,7 +252,7 @@ class Config {
    *
    * @return {this}
    */
-  public receive(): Promise<this> {
+  public receive(): Promise<void> {
     return receive(this);
   }
 

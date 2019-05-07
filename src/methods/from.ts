@@ -5,7 +5,7 @@ import _in = require("./_in");
 
 function methodsFrom(
   config: Config,
-  sourcepath: string | string[],
+  sourcepath: string, // | string[],
   rawTo?: string,
 ): Config {
   const sourcepathType = kindOf(sourcepath);

@@ -1,8 +1,12 @@
 import Config from "../src/Config";
 
-jest.mock("../src/methods/receive", () => jest.fn((() => "test")));
+jest.mock("../src/methods/receive", () => {
+  return {
+    default: jest.fn((() => "test")),
+  };
+});
 
-import receive = require("../src/methods/receive");
+import receive from "../src/methods/receive";
 
 describe("Config#receive", () => {
   it("should call methods/receive", () => {

@@ -11,6 +11,11 @@ export interface IReceivePlugin {
   read: (sourcepath: string) => Promise<object>;
 }
 
+export type IReceivePluginClass = new (logger?: any) => IReceivePlugin;
+// export interface IReceivePluginClass {
+//   new (logger?: any): IReceivePlugin;
+// }
+
 export type Name = string | string[];
 export type Value = null | any[] | string | number | object | boolean;
 export type ReturnValue = Value | undefined;

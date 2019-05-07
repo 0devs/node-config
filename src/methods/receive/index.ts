@@ -4,7 +4,7 @@ import ConfigError from "../../Error";
 import searchPlugins from "./searchPlugins";
 import read = require("./read");
 
-module.exports = function methodsReceiveIndex(config: Config) {
+const  methodsReceiveIndex = (config: Config): Promise<void> => {
   return new Promise((resolve, reject) => {
     config._debug("receive: start receive sources");
 
@@ -39,3 +39,5 @@ module.exports = function methodsReceiveIndex(config: Config) {
     return undefined;
   });
 };
+
+export default methodsReceiveIndex;
