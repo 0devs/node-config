@@ -2,6 +2,16 @@ import ConfigError from "./Error";
 
 import kindOf = require("./modules/kind-of");
 
+import {
+  IFromItem,
+  IReceivePlugin,
+  Name,
+  Value,
+  ReturnValue,
+  Data,
+  ValidationFunction,
+} from "./types";
+
 // class methods
 import set from "./methods/set";
 import get from "./methods/get";
@@ -17,16 +27,7 @@ export { ConfigError as Error };
 
 type Logger = any;
 
-export type Name = string | string[];
-export type Value = null | any[] | string | number | object | boolean;
-export type ReturnValue = Value | undefined;
-export type Data = any;
-export type ValidationFunction = (data: Data) => Promise<boolean>;
-
-export interface IFromItem {
-  sourcepath: string | string[];
-  to: string;
-}
+export {IReceivePlugin, IFromItem, Name, Value, ReturnValue, Data, ValidationFunction};
 
 /**
  * Config
@@ -39,7 +40,7 @@ class Config {
   private _validation: ValidationFunction | null;
   private _data: Data;
   private _from: IFromItem[];
-  private _receivePlugins: [];
+  private _receivePlugins: IReceivePlugin[];
   private _validatePlugin: null;
 
   /**
@@ -60,6 +61,14 @@ class Config {
 
     this._receivePlugins = [];
     this._validatePlugin = null;
+  }
+
+  public get __from() {
+    return this._from;
+  }
+
+  public get __receivePlugins() {
+    return this._receivePlugins;
   }
 
   public get __data() {

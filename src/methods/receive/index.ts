@@ -1,14 +1,15 @@
-const ConfigError = require('../../Error');
+import Config from "../../Config";
+import ConfigError from "../../Error";
 
-const searchPlugins = require('./searchPlugins');
-const read = require('./read');
+import searchPlugins from "./searchPlugins";
+import read = require("./read");
 
-module.exports = function methodsReceiveIndex(config) {
+module.exports = function methodsReceiveIndex(config: Config) {
   return new Promise((resolve, reject) => {
-    config._debug('receive: start receive sources');
+    config._debug("receive: start receive sources");
 
-    if (config._from.length === 0) {
-      config._debug('receive: no from, resolve');
+    if (config.__from.length === 0) {
+      config._debug("receive: no from, resolve");
       return resolve();
     }
 
