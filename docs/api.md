@@ -34,7 +34,7 @@
 
 set config immutable or allow changes
 
-by default config **muttable** - changes allowed
+by default config **mutable** - changes allowed
 
 - `flag` - Boolean. true - config immutable, false - not
 
