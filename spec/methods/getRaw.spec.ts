@@ -12,7 +12,7 @@ const createConfigStub = (data: any = {}) => {
   } as any as Config;
 };
 
-describe("methods#get", () => {
+describe("methods/get", () => {
   it("should return full config object on getRaw('.')", () => {
     const config = createConfigStub();
 
