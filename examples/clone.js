@@ -1,8 +1,10 @@
-/* eslint-disable no-console */
-
 const Config = require('../lib/Config').default;
 
 const config = new Config();
+
+/* eslint-disable no-console */
+const log = (msg, json) => console.log(msg, '\n', JSON.stringify(json, null, 2));
+/* eslint-enable no-console */
 
 config
   .set('.', {
@@ -16,22 +18,16 @@ config
   })
   .setImmutable(false);
 
-console.log('full config', config.get('.'));
+log('full config', config.get('.'));
 
 const clonedConfig = config.clone('.');
-
-console.log('clonedConfig', clonedConfig.get('.'));
+log('clonedConfig', clonedConfig.get('.'));
 
 const serverConfig = config.clone('server');
-
-console.log('serverConfig immutable', serverConfig.isImmutable());
+log('serverConfig immutable', serverConfig.isImmutable());
 
 serverConfig.set('some', 1);
-
-console.log('server config', serverConfig.get('.'));
+log('server config', serverConfig.get('.'));
 
 const restConfig = config.clone('rest');
-
-console.log('rest config', restConfig.get('.'));
-
-/* eslint-enable no-console */
+log('rest config', restConfig.get('.'));
