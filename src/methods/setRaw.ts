@@ -6,7 +6,6 @@ import _in = require("./_in");
 import ConfigError from "../Error";
 import Config, {Name, Value} from "../Config";
 
-
 const methodsSetRaw = (config: Config, name: Name, value: Value): Config => {
   config._debug(
     "setRaw: name = ", name,
