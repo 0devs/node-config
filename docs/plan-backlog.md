@@ -32,6 +32,48 @@ var obj = config.getMany({
 }
 ```
 
+## new `use` method signature
+
+create plugin before call use method
+
+```ts
+const config = new Config();
+
+const plugin = new Plugin();
+
+// OR just object
+const plugin1 = {
+  type: "receive",
+  read: () => {return {a: 1, b: 2}},
+};
+
+config.use(plugin);
+config.use(plugin1);
+
+```
+
+or may be new `from` method signuture
+
+```ts
+// not plugin, but source
+
+// init plugins
+const json = new JsonPlugin();
+const consul = new ConsulPlugin();
+const vault = new VaultPlugin();
+
+config
+  .from(json("/etc/cfg.json"), "cfg")
+  .from(consul("db"), "db")
+  .from(vault("db/password"), "db.password")
+  .replaceFrom(env({
+    HOST: "cfg.host",
+    PORT: "cfg.port",
+  }));
+
+```
+
+
 ## config types
 
 ```ts
