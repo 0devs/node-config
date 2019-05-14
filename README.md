@@ -1,6 +1,6 @@
 # @0devs/config
 
-extendable config
+extendable config for node and browser
 
 # install
 
@@ -10,62 +10,21 @@ npm install --save @0devs/config
 
 # usage
 
-this package can be used with node.js or in browser
+```ts
+import Config from "@0devs/config";
 
-by default config can't receive any config types, use [plugins](#plugins)
-
-here example of node.js usage, reading json configs
-
-```js
-var Config = require('@0devs/config');
-
-var config = new Config();
+const config = new Config();
 
 config
-    .use(require('@0devs/config-from-json'))
-    .from('/etc/config/base.json')
-    .from('/etc/config/mysql.json', 'db.mysql')
-    .from('/etc/config/mongo.json', 'db.mongo')
-    .from('/etc/config/api.json', 'api')
-    .init()
-    .then(() => {
-        config.setImmutable(true);
+  .defaults({server: {host: null, port: 80}})
+  .from(() => Promise.resolve({server: {host: "127.0.0.1", port: 8080}}), ".")
+  .from(() => Promise.resolve(9090), "server.port");
 
-        var fullConfigObject = config.get('.');
+await config.read();
 
-        // fullConfigObject =
-        {
-            // host and port from base.json
-            host: 'localhost',
-            port: 80,
-
-            db: {
-                mysql: {
-                    // from mysql.json
-                },
-                mongo: {
-                    // from mongo.json
-                }
-            },
-            api: {
-                // from api.json
-            }
-        }
-    })
-    .catch((error) => {
-        // log error
-    });
+config.get("server.port"); // => 9090
+config.config(); // {server: {host: "127.0.0.1", port: 9090}}
 ```
-
-for more details (plugins, validation) - see [examples](https://github.com/mafjs/config/tree/master/examples)
-
-# plugins
-
-[@0devs/config-from-json](https://github.com/0devs/node-config-from-json) - read json configs
-
-# API
-
-see [docs/api.md](docs/api.md)
 
 # LICENSE
 
