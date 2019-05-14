@@ -21,7 +21,7 @@ module.exports.globals = {
 
 module.exports.testMatch = [
   '**/**/*.spec.ts',
-  '**/**/*.spec.js',
+//   '**/**/*.spec.js',
 ];
 
 module.exports.transform = {
