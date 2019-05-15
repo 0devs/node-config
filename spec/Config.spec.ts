@@ -157,6 +157,13 @@ describe("#fromOptional", () => {
     await config.read();
     expect(config.config()).toEqual({});
   });
+
+  it("should not throw error if read failed and has keypath", async () => {
+    const config = new Config();
+    config.fromOptional(() => Promise.reject(new Error("test")), "a");
+    await config.read();
+    expect(config.config()).toEqual({});
+  });
 });
 
 

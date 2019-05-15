@@ -94,7 +94,7 @@ export default class Config<D extends {[index: string]: any}> {
           .catch((error) => {
             if (from.optional) {
               this._error(error);
-              return {...from, source: {}};
+              return {...from, source: undefined};
             }
 
             throw error;
@@ -110,6 +110,11 @@ export default class Config<D extends {[index: string]: any}> {
         Object.values(results)
           .filter(({defaults}) => defaults === true)
           .forEach(({source}) => {
+            if (typeof source === "undefined") {
+              this._debug(`skip undefined source for defaults`);
+              return;
+            }
+
             data = deepmerge(data, source);
           });
 
@@ -117,6 +122,11 @@ export default class Config<D extends {[index: string]: any}> {
         Object.values(results)
           .filter(({defaults}) => defaults === false)
           .forEach(({source, destination}) => {
+            if (typeof source === "undefined") {
+              this._debug(`skip undefined source for destination=${destination}`);
+              return;
+            }
+
             if (destination === ".") {
               data = deepmerge(data, source);
             } else {
