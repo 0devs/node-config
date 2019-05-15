@@ -92,6 +92,35 @@ describe("#from", () => {
     expect(config.config()).toEqual({test: {y: {a: 1}}});
   });
 
+  describe("if current key value is object", () => {
+    it("should merge from-result", async () => {
+      const config = new Config();
+      config.setData({a: {b: 1, d: 4}});
+      config.from(() => Promise.resolve({b: 2, c: 3}), "a");
+      await config.read();
+      expect(config.config()).toEqual({a: {b: 2, c: 3, d: 4}});
+    });
+  });
+
+  describe("if current key value is array", () => {
+    it("should merge from-result", async () => {
+      const config = new Config();
+      config.setData({a: [1, 2, 3]});
+      config.from(() => Promise.resolve([4, 5, 6]), "a");
+      await config.read();
+      expect(config.config()).toEqual({a: [1, 2, 3, 4, 5, 6]});
+    });
+  });
+
+  it.each([1, "string", null, undefined, () => 0].map(v => [v]))
+    ("if current key value is %s, should set from-result without merge", async (a) => {
+      const config = new Config();
+      config.setData({a});
+      config.from(() => Promise.resolve("test"), "a");
+      await config.read();
+      expect(config.config()).toEqual({a: "test"});
+    });
+
   it("should throw error if read failed", async (done) => {
     const config = new Config();
     config.from(() => Promise.reject(new Error("test")), ".");

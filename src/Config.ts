@@ -21,7 +21,15 @@ export default class Config<D extends {[index: string]: any}> {
   }
 
   public set(name: string, value: any) {
+    if (name === ".") {
+      throw new Error("name '.' not allowed");
+    }
+
     _set(this._data, name, value);
+  }
+
+  public setData(value: any) {
+    this._data = this._clone(value);
   }
 
   public get(name: string, defaultValue?: any) {
@@ -112,7 +120,17 @@ export default class Config<D extends {[index: string]: any}> {
             if (destination === ".") {
               data = deepmerge(data, source);
             } else {
-              _set(data, destination, source);
+              const currentValue = _get(data, destination);
+
+              const isObjectOrArray = currentValue && currentValue != null
+                && (typeof currentValue === "object" || Array.isArray(currentValue));
+
+              if (isObjectOrArray) {
+                // deepmerge
+                _set(data, destination, deepmerge(currentValue, source));
+              } else {
+                _set(data, destination, source);
+              }
             }
           });
 
