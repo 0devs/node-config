@@ -93,7 +93,10 @@ export default class Config<D extends {[index: string]: any}> {
           .then(source => ({...from, source}))
           .catch((error) => {
             if (from.optional) {
-              this._error(error);
+              if (!error._zeroConfigOptional) {
+                this._error(error);
+              }
+
               return {...from, source: undefined};
             }
 
