@@ -1,6 +1,6 @@
 {
   "name": "@0devs/config",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "extendable config",
   "main": "lib/Config.js",
   "types": "lib/Config.d.ts",
