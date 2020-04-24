@@ -12,6 +12,7 @@
     "ts": "tsc --watch",
     "postversion": "git push origin && git push --tags",
     "prepublish": "npm run clean && npm run build",
+    "ci": "npm run lint && npm run test:coverage",
     "---build:for-test": "npm run build -- --plugins istanbul",
     "---build:package-json": "node ./scripts/copyPackageJson",
     "---dev": "npm run build -- --watch --plugins istanbul",
