@@ -8,6 +8,6 @@ export interface IFrom {
   destination: Destination;
   optional: boolean;
   defaults: boolean;
-};
+}
 
 export type Validation = ((data: any) => Promise<any>) | null;

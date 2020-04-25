@@ -6,6 +6,7 @@
   "types": "lib/Config.d.ts",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "clean": "rm -rf lib coverage npm-debug.log",
     "build": "tsc",
     "lint": "eslint --ext .js,.ts ./src ./spec",
